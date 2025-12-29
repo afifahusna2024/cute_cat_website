@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐾</text></svg>">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pawfect Day 🐾 - Pet Care Companion</title>
+  </head>
+  <body>
+    <div id="loading-screen">
+      <div class="loading-animation">
+        <div class="paw-bounce">🐾</div>
+        <p>Loading your pawfect day...</p>
+      </div>
+    </div>
+
+    <div id="app" style="display: none;">
+      <button class="menu-toggle" id="menuToggle">☰</button>
+
+      <div class="side-menu" id="sideMenu">
+        <div class="menu-header">
+          <h2>Menu</h2>
+          <button class="close-menu" id="closeMenu">✕</button>
+        </div>
+        <nav class="menu-nav">
+          <button class="menu-item" data-tab="home">🏠 Home</button>
+          <button class="menu-item" data-tab="my-cats">🐱 My Cats</button>
+          <button class="menu-item" data-tab="history">📅 History</button>
+        </nav>
+      </div>
+
+      <div class="overlay" id="overlay"></div>
+
+      <main id="mainContent">
+        <div class="page" id="homePage">
+          <header class="app-header">
+            <h1>Pawfect Day 🐾</h1>
+            <p class="subtitle">Pet Care Companion</p>
+            <p class="date" id="currentDate"></p>
+            <button class="theme-btn" id="themeBtn">Themes 🎨</button>
+          </header>
+
+          <div class="cat-switcher" id="catSwitcher" style="display: none;">
+            <button class="cat-switch-btn" id="prevCat">←</button>
+            <div class="current-cat-info" id="currentCatInfo"></div>
+            <button class="cat-switch-btn" id="nextCat">→</button>
+          </div>
+
+          <section class="checklist-section">
+            <h2>Daily Tasks ✨</h2>
+            <div class="checklist" id="checklist"></div>
+            <button class="reset-btn" id="resetBtn">Reset Day 🔄</button>
+          </section>
+
+          <div class="completion-message" id="completionMessage">
+            <h2>Your cat had a Pawfect Day! 🎉🐾</h2>
+            <div class="confetti"></div>
+          </div>
+        </div>
+
+        <div class="page" id="myCatsPage" style="display: none;">
+          <h1>My Cats 🐱</h1>
+          <button class="add-cat-btn" id="addCatBtn">+ Add New Cat</button>
+          <div class="cats-list" id="catsList"></div>
+        </div>
+
+        <div class="page" id="historyPage" style="display: none;">
+          <h1>History 📅</h1>
+          <div class="history-list" id="historyList"></div>
+        </div>
+      </main>
+
+      <div class="theme-palette" id="themePalette" style="display: none;">
+        <h3>Choose Theme</h3>
+        <div class="color-options">
+          <button class="color-btn" data-theme="purple" style="background: linear-gradient(135deg, #a78bfa, #e0c3fc);"></button>
+          <button class="color-btn" data-theme="blue" style="background: linear-gradient(135deg, #60a5fa, #bfdbfe);"></button>
+          <button class="color-btn" data-theme="green" style="background: linear-gradient(135deg, #4ade80, #bbf7d0);"></button>
+          <button class="color-btn" data-theme="peach" style="background: linear-gradient(135deg, #fdba74, #fde68a);"></button>
+          <button class="color-btn" data-theme="pink" style="background: linear-gradient(135deg, #f9a8d4, #fbcfe8);"></button>
+        </div>
+      </div>
+
+      <button class="floating-robot" id="chatBot">🤖</button>
+
+      <div class="chat-window" id="chatWindow" style="display: none;">
+        <div class="chat-header">
+          <h3>AI Assistant 🤖</h3>
+          <button class="close-chat" id="closeChat">✕</button>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+          <div class="bot-message">Hi! What would you like to know?</div>
+          <div class="chat-options" id="chatOptions">
+            <button class="chat-option" data-q="developer">Who developed this website?</button>
+            <button class="chat-option" data-q="name">Why is this site called Pawfect Day?</button>
+            <button class="chat-option" data-q="islam">Islamic views on cats?</button>
+            <button class="chat-option" data-q="addcat">How can I add another cat?</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal" id="petSetupModal" style="display: none;">
+        <div class="modal-content">
+          <h2>Add Your Cat 🐱</h2>
+          <form id="petSetupForm">
+            <div class="form-group">
+              <label>Cat's Name:</label>
+              <input type="text" id="petName" required>
+            </div>
+            <div class="form-group">
+              <label>Birthday:</label>
+              <input type="date" id="petBirthday" required>
+            </div>
+            <div class="form-group">
+              <label>Age (years):</label>
+              <input type="number" id="petAge" min="0" step="0.1" required>
+            </div>
+            <div class="form-group">
+              <label>Default Daily Tasks:</label>
+              <div class="task-options">
+                <label><input type="checkbox" value="Feed Pet" checked> Feed Pet</label>
+                <label><input type="checkbox" value="Clean Area" checked> Clean Area</label>
+                <label><input type="checkbox" value="Playtime" checked> Playtime</label>
+                <label><input type="checkbox" value="Grooming" checked> Grooming</label>
+                <label><input type="checkbox" value="Walk Pet" checked> Walk Pet</label>
+              </div>
+            </div>
+            <button type="submit" class="submit-btn">Save Cat 💾</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
